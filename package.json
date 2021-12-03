@@ -1,13 +1,8 @@
 {
-  "dependencies": {
-    "@discordjs/rest": "^0.1.0-canary.0",
-    "chalk": "^5.0.0",
-    "discord-api-types": "^0.24.0",
-    "discord.js": "^13.3.1"
-  },
   "name": "discordbot",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Discord Bot Clock",
+  "main": "src/index.js",
   "scripts": {
     "dev": "node src/index.js",
     "dev:watch": "nodemon src/index.js",
@@ -15,13 +10,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JakubJakubiak/AlertApiBot.git"
+    "url": "git+https://github.com/m7rlin/DiscordBot.git"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "discord",
+    "discord-bot",
+    "discord-js"
+  ],
+  "author": "Marcin Stawowczyk m7rlin",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JakubJakubiak/AlertApiBot/issues"
+    "url": "https://github.com/m7rlin/DiscordBot/issues"
   },
-  "homepage": "https://github.com/JakubJakubiak/AlertApiBot#readme",
-  "description": ""
+  "homepage": "https://github.com/m7rlin/DiscordBot#readme",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "discord.js": "^11.5.1",
+    "nodemon": "^2.0.1"
+  }
 }

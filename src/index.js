@@ -1,19 +1,27 @@
+const Discord = require("discord.js")
+const chalk = require("chalk")
 
 const config = require("./config/config.js")
 
-const { Client, Intents } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Discord.Client()
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
+const log = console.log
 
-client.on('interactionCreate', async interaction => {
-  if (!interaction.isCommand()) return;
+client.on("ready", () => {
+  log(chalk.green(`login ${client.user.tag}!`))
+})
 
-  if (interaction.commandName === 'ping') {
-    await interaction.reply('Pong!');
+client.on("message", (msg) => {
+  const { author } = msg
+
+  // Check if user is a bot
+  if (author.bot) {
+    return
   }
-});
 
-client.login(config.token);
+  if (msg.content === "!ping") {
+    msg.reply("Pong!")
+  }
+})
+
+client.login(config.token)
