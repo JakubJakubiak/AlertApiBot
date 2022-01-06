@@ -83,3 +83,4 @@ sw.*
 *.swp
 
 src/config/
+src/config/config.js
