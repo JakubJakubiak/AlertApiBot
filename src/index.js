@@ -22,7 +22,7 @@ let data = []
 let err = true
 
 const datas = () => {
-	const wallet = []
+	const wallet = config.wallet
 
 	for (let i = 0; i < wallet.length; i++) {
 		fetch(`https://api.ethermine.org/miner/:${wallet[i]}/workers`, {
@@ -42,7 +42,7 @@ const datas = () => {
         `)
 			.join('\n')
 			if(list !== "") data += list 
-			if(nTime() - oldTime  >= 600000) err = true
+			if(nTime() - oldTime  >= 100000) err = true
 			nTime()			
 			}
 			})
