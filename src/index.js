@@ -20,6 +20,7 @@ let nTime = () => new Date().getTime() - 1000 * 60 * 60 * 24 * 7
 let oldTime = nTime()
 let data = []
 let err = true
+let powerError = 80
 
 const datas = () => {
 	const wallet = config.wallet
@@ -32,7 +33,7 @@ const datas = () => {
 			.then(res => {
 				if (res.status === "OK") {
 				list = res.data
-			.filter(item => item.currentHashrate * 100 / item.reportedHashrate <= 94)
+			.filter(item => item.currentHashrate * 100 / item.reportedHashrate <= powerError)
 			.map(item => `
 			worker: ${item.worker}
 			lastSeen: ${item.lastSeen}
@@ -55,8 +56,7 @@ client.on("message", (msg) => {
 	const {author} = msg
 
 	// Check if user is a bot
-	if (author.bot) return
-	// if (msg.content === "!stop") return
+	if (author.bot) return ;
 	if (msg.content === "!start") {
 		msg.reply("Start");
 		setInterval(() => {
