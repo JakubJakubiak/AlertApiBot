@@ -1,6 +1,6 @@
+const dotenv = require("dotenv").config({ path: __dirname + "/./../../.env" })
+
 module.exports = {
-  token: 
-  wallet: [
-	
-	]
+  TOKEN: process.env.token,
+  Wallet: process.env.wallet,
 }

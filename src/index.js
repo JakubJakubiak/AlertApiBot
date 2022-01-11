@@ -23,7 +23,7 @@ let err = true
 let powerError = 80
 
 const datas = () => {
-	const wallet = config.wallet
+	const wallet = config.Wallet
 
 	for (let i = 0; i < wallet.length; i++) {
 		fetch(`https://api.ethermine.org/miner/:${wallet[i]}/workers`, {
@@ -66,10 +66,9 @@ client.on("message", (msg) => {
 				oldTime = nTime()
        			err = false 
 			};				
-			data = "";
-			log(oldTime)
+			data = ""
 		}, 6000)
 	}
 })
 
-client.login(config.token)
+client.login(config.TOKEN)
