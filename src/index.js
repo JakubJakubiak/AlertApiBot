@@ -32,7 +32,7 @@ const datas = () => {
 			.then(res => {
 				if (res.status === "OK") {
 				list = res.data
-			.filter(item => item.currentHashrate * 100 / item.reportedHashrate <= 80)
+			.filter(item => item.currentHashrate * 100 / item.reportedHashrate <= 94)
 			.map(item => `
 			worker: ${item.worker}
 			lastSeen: ${item.lastSeen}
@@ -43,13 +43,13 @@ const datas = () => {
 			.join('\n')
 			if(list !== "") data += list 
 			if(nTime() - oldTime  >= 100000) err = true
-			nTime()			
+			nTime()		
 			}
-		})
+			})
 			.catch((err) => console.log(err, "failed"))
 	}
 }
-datas()
+// datas()
 
 client.on("message", (msg) => {
 	const {author} = msg
@@ -58,15 +58,16 @@ client.on("message", (msg) => {
 	if (author.bot) return
 	// if (msg.content === "!stop") return
 	if (msg.content === "!start") {
-		msg.send("Start");
+		msg.reply("Start");
 		setInterval(() => {
 			datas();
 			if (data.length > 0 && err === true) {	
 				msg.reply(data)
 				oldTime = nTime()
        			err = false 
-			};
+			};				
 			data = "";
+			log(oldTime)
 		}, 6000)
 	}
 })
