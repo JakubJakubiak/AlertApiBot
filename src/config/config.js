@@ -1,6 +1,6 @@
 module.exports = {
-  token: "",
+  token: 
   wallet: [
-
+		
 	]
 }

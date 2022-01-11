@@ -31,7 +31,7 @@ const datas = () => {
 			.then(res => res.json())
 			.then(res => {
 				if (res.status === "OK") {
-					list = res.data
+				list = res.data
 			.filter(item => item.currentHashrate * 100 / item.reportedHashrate <= 80)
 			.map(item => `
 			worker: ${item.worker}
@@ -45,29 +45,28 @@ const datas = () => {
 			if(nTime() - oldTime  >= 100000) err = true
 			nTime()			
 			}
-			})
+		})
 			.catch((err) => console.log(err, "failed"))
 	}
 }
 datas()
 
 client.on("message", (msg) => {
-	const {
-		author
-	} = msg
+	const {author} = msg
 
 	// Check if user is a bot
 	if (author.bot) return
-	if (msg.content === "!moris") {
-		msg.reply("Start");
+	// if (msg.content === "!stop") return
+	if (msg.content === "!start") {
+		msg.send("Start");
 		setInterval(() => {
 			datas();
 			if (data.length > 0 && err === true) {	
 				msg.reply(data)
 				oldTime = nTime()
-				data = "";
-       			err = false
-			}
+       			err = false 
+			};
+			data = "";
 		}, 6000)
 	}
 })
