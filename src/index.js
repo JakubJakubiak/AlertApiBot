@@ -22,7 +22,7 @@ let data = []
 let err = true
 let powerError = 80
 
-const datas = () => {
+const datas = async () => {
 	const wallet = config.Wallet
 
 	for (let i = 0; i < wallet.length; i++) {
