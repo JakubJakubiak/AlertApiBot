@@ -43,7 +43,7 @@ const datas = async () => {
         `)
 			.join('\n')
 			if(list !== "") data += list 
-			if(nTime() - oldTime  >= 100000) err = true
+			if(nTime() - oldTime  >= 100000 && err == false) err = true
 			nTime()
 			}	
 			})
