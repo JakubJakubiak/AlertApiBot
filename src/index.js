@@ -43,7 +43,7 @@ const datas = async () => {
         `)
 			.join('\n')
 			if(list !== "") data += list 
-			if(nTime() - oldTime  >= 100000 && err == false) err = true
+			if(nTime() - oldTime  >= 10000000 && err == false) err = true
 			nTime()
 			}	
 			})
@@ -67,7 +67,7 @@ client.on("message", (msg) => {
        			err = false 
 			};				
 			data = ""
-		}, 6000)
+		}, 8000)
 	}
 })
 
