@@ -50,6 +50,7 @@ const datas = async () => {
 			.catch((err) => console.log(err, "failed"))
 	}
 }
+datas()
 
 client.on("message", (msg) => {
 	const {author} = msg
@@ -58,9 +59,9 @@ client.on("message", (msg) => {
 	if (author.bot) return ;
 	if (msg.content === "!start") {
 		msg.reply("Start");
+		log(data);
 		setInterval(() => {
-			datas();
-			log(data)
+			datas();		
 			if (data.length > 0 && err === true) {	
 				msg.reply(data)
 				oldTime = nTime()
