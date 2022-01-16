@@ -24,7 +24,7 @@ let powerError = 80
 
 const datas = async () => {
 	const wallet = config.Wallet
-
+	
 	for (let i = 0; i < wallet.length; i++) {
 		fetch(`https://api.ethermine.org/miner/:${wallet[i]}/workers`, {
 				method: 'GET'
@@ -44,13 +44,14 @@ const datas = async () => {
 			.join('\n')
 			if(list !== "") data += list 
 			if(nTime() - oldTime  >= 100000) err = true
-			nTime()		
-			}
+			nTime()
+			}	
 			})
 			.catch((err) => console.log(err, "failed"))
 	}
 }
-// datas()
+datas()
+
 
 client.on("message", (msg) => {
 	const {author} = msg
@@ -61,6 +62,7 @@ client.on("message", (msg) => {
 		msg.reply("Start");
 		setInterval(() => {
 			datas();
+			log(data)
 			if (data.length > 0 && err === true) {	
 				msg.reply(data)
 				oldTime = nTime()
