@@ -50,7 +50,6 @@ const datas = async () => {
 			.catch((err) => console.log(err, "failed"))
 	}
 }
-datas()
 
 client.on("message", (msg) => {
 	const {author} = msg
