@@ -56,6 +56,7 @@ client.on("message", (msg) => {
 
 	// Check if user is a bot
 	if (author.bot) return ;
+	if (msg.content === "!ping") msg.reply(data);
 	if (msg.content === "!start") {
 		msg.reply("Start");
 		log(data);
