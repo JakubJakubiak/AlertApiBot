@@ -45,7 +45,7 @@ const datas = async () => {
 			if(list !== "") data += list 
 			if(nTime() - oldTime  >= 600000 && err == false) err = true
 			nTime()
-			}	log(data)
+			}
 			})
 			.catch((err) => console.log(err, "failed"))
 	}
