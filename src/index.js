@@ -43,9 +43,9 @@ const datas = async () => {
         `)
 			.join('\n')
 			if(list !== "") data += list 
-			if(nTime() - oldTime  >= 10000000 && err == false) err = true
+			if(nTime() - oldTime  >= 600000 && err == false) err = true
 			nTime()
-			}	
+			}	log(data)
 			})
 			.catch((err) => console.log(err, "failed"))
 	}
@@ -56,7 +56,7 @@ client.on("message", (msg) => {
 
 	// Check if user is a bot
 	if (author.bot) return ;
-	if (msg.content === "!ping") msg.reply(data);
+	if (msg.content === "!ping") msg.reply("ping",data);
 	if (msg.content === "!start") {
 		msg.reply("Start");
 		log(data);
