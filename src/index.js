@@ -70,7 +70,7 @@ client.on("message", (msg) => {
        			err = false 
 			};				
 			data = ""
-		}, 8000)
+		}, 35000)
 	}
 })
 
