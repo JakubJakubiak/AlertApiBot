@@ -25,6 +25,7 @@ let powerError = 80
 const datas = async () => {
 	const wallet = config.Wallet
 	const ignore = config.Ignore
+	const color = config.Color
 	
 	for (let i = 0; i < wallet.length; i++) {
 		fetch(`https://api.ethermine.org/miner/:${wallet[i]}/workers`, {
@@ -37,16 +38,16 @@ const datas = async () => {
 			.filter(item => item.currentHashrate * 100 / item.reportedHashrate <= powerError 
 					&& item.worker !== ignore)
 			.map(item => `
-			worker: ${item.worker}
-			lastSeen: ${item.lastSeen}
-			reportedHashrate: ${item.reportedHashrate}
-			currentHashrate: ${item.currentHashrate}
+			worker: ${item.worker} ${color[i]}
+			lastSeen: ${item.lastSeen.substr(-item.lastSeen.length,3)} MH/s ${item.lastSeen} MH/s
+			reportedHashrate: ${item.reportedHashrate} MH/s
+			currentHashrate: ${item.currentHashrate} MH/s
 			${Math.floor(item.currentHashrate*100/item.reportedHashrate)} %
 			`)
 			.join('\n')
 			if(list !== "") data += list 
 			if(nTime() - oldTime  >= 600000 && err == false) err = true
-			nTime()
+			nTime() 
 		}
 		})
 		.catch((err) => console.log(err, "failed"))
