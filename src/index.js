@@ -35,11 +35,11 @@ const datas = async () => {
 		.then(res => {
 		if (res.status === "OK") {
 			list = res.data
-			.filter(item => item.currentHashrate * 100 / item.reportedHashrate <= powerError 
+			.filter(item => item.currentHashrate * 100 / item.reportedHashrate +1 <= powerError
 					&& item.worker !== ignore)
 			.map(item => `
 			worker: ${item.worker} ${color[i]}
-			lastSeen: ${item.lastSeen.substr(-item.lastSeen.length,3)} MH/s ${item.lastSeen} MH/s
+			lastSeen: ${item.lastSeen} MH/s
 			reportedHashrate: ${item.reportedHashrate} MH/s
 			currentHashrate: ${item.currentHashrate} MH/s
 			${Math.floor(item.currentHashrate*100/item.reportedHashrate)} %
