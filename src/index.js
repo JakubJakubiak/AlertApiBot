@@ -1,6 +1,7 @@
 const {
 	Client,
-	Intents
+	Intents,
+	MessageEmbed
 } = require('discord.js')
 const client = new Client({
 	intents: [Intents.FLAGS.GUILDS]
@@ -25,6 +26,7 @@ let powerError = 80
 const datas = async () => {
 	const wallet = config.Wallet
 	const ignore = config.Ignore
+	const image = config.Image
 	const color = config.Color
 	
 	for (let i = 0; i < wallet.length; i++) {
@@ -35,23 +37,24 @@ const datas = async () => {
 		.then(res => {
 		if (res.status === "OK") {
 			list = res.data
-			.filter(item => item.currentHashrate * 100 / item.reportedHashrate +1 <= powerError
+			.filter(item => (item.currentHashrate * 100 / item.reportedHashrate <= powerError
+					|| item.reportedHashrate === 0 )
 					&& item.worker !== ignore)
-			.map(item => `
-			worker: ${item.worker} ${color[i]}
+			.map(item =>`
+			worker: ${item.worker}  ${image[i]}
 			lastSeen: ${item.lastSeen} MH/s
 			reportedHashrate: ${item.reportedHashrate} MH/s
 			currentHashrate: ${item.currentHashrate} MH/s
-			${Math.floor(item.currentHashrate*100/item.reportedHashrate)} %
+			${Math.floor(item.currentHashrate*100/item.reportedHashrate)} %	
 			`)
 			.join('\n')
-			if(list !== "") data += list 
+			if(list !== "") data += list
 			if(nTime() - oldTime  >= 600000 && err == false) err = true
 			nTime() 
 		}
 		})
 		.catch((err) => console.log(err, "failed"))
-	}
+	}	
 }
 
 client.on("message", (msg) => {

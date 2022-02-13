@@ -4,5 +4,6 @@ module.exports = {
   TOKEN: process.env.Token,
   Wallet: [process.env.WALLET, process.env.WALLET2, process.env.WALLET3],
   Ignore: process.env.IGNORE,
-  Color: ["🍌","🐺","🍎"]
+  Color: ["FFE135", "ff69b4", "FBFCFC"],
+  Image: ["🍌","🐺","👢"]
 }
