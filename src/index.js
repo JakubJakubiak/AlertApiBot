@@ -20,7 +20,7 @@ client.on("ready", () => {
 let nTime = () => new Date().getTime() - 1000 * 60 * 60 * 24 * 7
 let oldTime = nTime()
 let data = []
-let err = start = true
+let [err, start] = true
 let powerError = 80
 
 const datas = async () => {
