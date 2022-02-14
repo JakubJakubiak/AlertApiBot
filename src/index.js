@@ -59,11 +59,13 @@ const datas = async () => {
 
 client.on("message", (msg) => {
 	const {author} = msg
-
+	let start = true
+	
 	// Check if user is a bot
 	if (author.bot) return ;
 	if (msg.content === "!ping") msg.reply("ping",data);
-	if (msg.content === "!start") {
+	if (msg.content === "!start" && start === true) {
+		start = false
 		msg.reply("Start");
 		log(data);
 		setInterval(() => {
