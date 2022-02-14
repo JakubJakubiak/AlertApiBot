@@ -20,7 +20,7 @@ client.on("ready", () => {
 let nTime = () => new Date().getTime() - 1000 * 60 * 60 * 24 * 7
 let oldTime = nTime()
 let data = []
-let err = true
+let err = start = true
 let powerError = 80
 
 const datas = async () => {
@@ -59,8 +59,7 @@ const datas = async () => {
 
 client.on("message", (msg) => {
 	const {author} = msg
-	let start = true
-	
+
 	// Check if user is a bot
 	if (author.bot) return ;
 	if (msg.content === "!ping") msg.reply("ping",data);
