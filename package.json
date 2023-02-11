@@ -9,7 +9,7 @@
     "dotenv": "^8.6.0",
     "js-yaml": "^3.13.1",
     "node-fetch": "^2.6.6",
-    "nodemon": "^2.0.1"
+    "nodemon": "^2.0.20"
   },
   "name": "discordbot",
   "version": "1.0.0",
